@@ -1,0 +1,28 @@
+
+
+@theme {
+  --color-main-50:  #e6f7e6;
+  --color-main-100: #c0eac0;
+  --color-main-200: #97dc97;
+  --color-main-300: #6dcc6d;
+  --color-main-400: #48bc48;
+  --color-main-500: #0aad0a;
+  --color-main-600: #099b09;
+  --color-main-700: #078507;
+  --color-main-800: #066f06;
+  --color-main-900: #034303;
+
+  --color--light:#f0f3f2;
+  --color--rating:#ffc908;
+
+    --font-family-main:'Encode Sans Expanded', sans-serif;
+
+
+  --shadow-main:rgba(145, 158, 171, 0.2) 0px 2px 4px -1px,
+    rgba(145, 158, 171, 0.14) 0px 4px 5px 0px,
+    rgba(145, 158, 171, 0.12) 0px 1px 10px 0px;
+
+}
+
+@custom-variant dark (&:where(.dark, .dark *));
+

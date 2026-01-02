@@ -1,0 +1,82 @@
+
+<nav class="bg-neutral-primary fixed w-full z-20 top-0 start-0 border-b border-default">
+  <div class="max-w-7xl flex flex-wrap items-center justify-between mx-auto p-4">
+    <a routerLink="/home" class="flex items-center space-x-5 rtl:space-x-reverse">
+       <img src="images/freshcart-logo.svg" alt="">
+    </a>
+ <button
+  (click)="toggleMobileMenu()"
+  type="button"
+  class="inline-flex items-center p-2 w-10 h-10 justify-center text-sm text-body rounded-base md:hidden hover:bg-neutral-secondary-soft hover:text-heading focus:outline-none focus:ring-2 focus:ring-neutral-tertiary"
+  aria-controls="navbar-default"
+  [attr.aria-expanded]="isMobileMenuOpen"
+>
+  <span class="sr-only">Open main menu</span>
+  <svg class="w-6 h-6" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
+    <path stroke="currentColor" stroke-linecap="round" stroke-width="2" d="M5 7h14M5 12h14M5 17h14"/>
+  </svg>
+</button>
+
+    <div class="hidden w-full md:block md:w-auto" 
+    
+    [class.hidden]="!isMobileMenuOpen"
+    id="navbar-default">
+      <ul class="font-medium flex flex-col p-4 md:p-0 mt-4 border border-default rounded-base bg-neutral-secondary-soft md:flex-row  md:mt-0 md:border-0 md:bg-neutral-primary">
+    @if (isLogin) {
+            <li>
+          <a routerLink="/home" (click)="closeMobileMenu()" routerLinkActive="active-link" [queryParamsHandling]="'merge'"class="block py-2 px-3 capitalize ">Home</a>
+        </li>     
+        <li>
+          <a routerLink="/cart" (click)="closeMobileMenu()" routerLinkActive="active-link" [queryParamsHandling]="'merge'"
+          class="block py-2 px-3 capitalize relative ">
+            cart
+        @if (cartService.numOfCartItems |async) {
+              <div class="absolute inline-flex items-center justify-center w-6 h-6 text-xs 
+            font-bold text-white bg-black border-2 border-buffer rounded-full -top-2 -end-2">
+            {{cartService.numOfCartItems |async}}
+
+          </div>
+        }
+          </a>
+        </li>     
+        <li>
+          <a routerLink="/products" (click)="closeMobileMenu()" routerLinkActive="active-link"[queryParamsHandling]="'merge'" class="block py-2 px-3 capitalize ">products</a>
+        </li>     
+        <li>
+          <a routerLink="/Wish" (click)="closeMobileMenu()"
+           routerLinkActive="active-link"[queryParamsHandling]="'merge'" 
+           class="block py-2 px-3 capitalize relative">
+        @if (wishListService.numOfWishItems|async) {
+              <div class="absolute inline-flex items-center justify-center w-6 h-6 text-xs 
+            font-bold text-white bg-black border-2 border-buffer rounded-full -top-2 -end-2">
+            {{wishListService.numOfWishItems|async}}
+
+          </div>
+        }
+           Wish</a>
+        </li>     
+        <li>
+          <a routerLink="/categoires" (click)="closeMobileMenu()" routerLinkActive="active-link"[queryParamsHandling]="'merge'" class="block py-2 px-3 capitalize ">categories</a>
+        </li>     
+        <li>
+          <a routerLink="/brands" (click)="closeMobileMenu()" routerLinkActive="active-link"[queryParamsHandling]="'merge'" class="block py-2 px-3 capitalize ">brands</a>
+        </li>  
+        <li>
+   <button
+          (click)="logout()"
+        class="block py-2 px-3 capitalize cursor-pointer">log out
+        </button>
+        </li> 
+    }@else {
+                <li>
+          <a routerLink="/login" (click)="closeMobileMenu()" routerLinkActive="active-link" class="block py-2 px-3 capitalize ">login</a>
+        </li>  
+             <li>
+          <a routerLink="/Register" (click)="closeMobileMenu()" routerLinkActive="active-link" class="block py-2 px-3 capitalize ">register</a>
+        </li> 
+     }  
+      </ul>
+    </div>
+  </div>
+</nav>
+

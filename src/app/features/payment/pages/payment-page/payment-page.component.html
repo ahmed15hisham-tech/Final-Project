@@ -1,0 +1,76 @@
+<div class="w-full h-screen flex items-center justify-center ">
+  <form [formGroup]="userInfoForm" (ngSubmit)="sendUserInfo()" 
+  class="w-full md:w-1/2 rounded-lg">
+    <div class="flex font-bold justify-center mt-6">
+      <img class=" w-56 mb-5" src="/images/freshcart-logo.svg" />
+    </div>
+    <div class="px-12 pb-10">
+      <div class="w-full mb-2">
+        <div class="flex items-center">
+          <input
+          formControlName="details"
+            type="text"
+            placeholder="Details"
+            class="
+              w-full
+              border
+              rounded
+              px-3
+              py-2
+              text-gray-700
+              focus:outline-none
+            "
+          />
+        </div>
+        <div class="flex items-center mt-3">
+          <input
+          formControlName="phone"
+            type="text"
+            placeholder="Phone"
+            class="
+              w-full
+              border
+              rounded
+              px-3
+              py-2
+              text-gray-700
+              focus:outline-none
+            "
+          />
+        </div>
+        <div class="flex items-center mt-3">
+          <input
+          formControlName="city"
+            type="text"
+            placeholder="City"
+            class="
+              w-full
+              border
+              rounded
+              px-3
+              py-2
+              text-gray-700
+              focus:outline-none
+            "
+          />
+        </div>
+      </div>
+    <div class="flex gap-2">
+          <button
+          (click)="selectedMethod='cash'"
+        type="submit"
+        class="
+     btn-main w-full mt-3 ">
+        Cash
+      </button>
+        <button
+        (click)="selectedMethod='online'"
+        type="submit"
+        class="
+        btn-main w-full mt-3" >
+        Online
+      </button>
+    </div>
+    </div>
+  </form>
+</div>

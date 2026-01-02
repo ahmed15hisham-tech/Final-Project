@@ -1,0 +1,11 @@
+
+<div class="pt-3">
+      <owl-carousel-o [options]="customOptions">
+
+    @for (cat of categoriesService.allCategories; track cat._id) {
+      <ng-template carouselSlide [id]="cat._id">
+        <img class="h-48" [src]="cat.image" [alt]="cat.name" [title]="cat.name">
+      </ng-template>
+    }
+  </owl-carousel-o>
+</div>

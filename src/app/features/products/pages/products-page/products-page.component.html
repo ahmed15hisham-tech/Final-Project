@@ -1,0 +1,39 @@
+
+<section class="px-20 py-10">
+<app-section-header [title]="'All Proudcts'"/>
+
+   @if (!productsService.allProducts) {
+  <app-loding-spinner/>
+
+
+
+   }@else {
+
+
+      <!-- Search Input -->
+
+    <div class="my-20">
+
+            <input  
+            [(ngModel)]="searchText"
+            type="search" class="main-input bg-gray-300 text-black shadow-2xl" placeholder="Search by Name or Id...">
+    </div>
+
+  
+
+    <!-- All Product -->
+       <div class="grid md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
+        @for (prod of productsService.allProducts  |filterItems:searchText: ['title','_id'] | paginate: { itemsPerPage: limit, currentPage: page ,
+         totalItems:productsService.totalProducts}  ; track prod._id) {
+     <app-card-products [prod]="prod"/>
+        }
+    </div>
+
+
+<div class="flex justify-center items-center mt-5">
+           <pagination-controls (pageChange)="pagechanged($event)"></pagination-controls>
+
+</div>  
+ }
+
+</section>

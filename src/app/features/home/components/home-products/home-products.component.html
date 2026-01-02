@@ -1,0 +1,15 @@
+<section class="px-20 py-10">
+
+    <app-section-header [title]="'Comane Proudcts'"/>
+    <!-- All Products -->
+   @if (!productsService.allProducts) {
+  <app-loding-spinner/>
+
+   }@else {
+       <div class="grid md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
+        @for (prod of productsService.allProducts; track prod._id) {
+     <app-card-products [prod]="prod"/>
+        }
+    </div>
+   }
+</section>

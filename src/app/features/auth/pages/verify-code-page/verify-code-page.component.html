@@ -1,0 +1,42 @@
+<section class="p-20">
+  <div class="bg-main-100 rounded-3xl p-20">
+    <header>
+      <h1 class="text-center font-bold text-4xl">reset your account password</h1>
+    </header>
+
+    <form [formGroup]="form" (ngSubmit)="submit()">
+      <input
+        class="peer main-input mt-8"
+        type="email"
+        formControlName="email"
+        placeholder="Email"
+      />
+
+      <input
+        class="peer main-input mt-3"
+        type="password"
+        formControlName="newPassword"
+        placeholder="New password"
+      />
+
+      <input
+        class="peer main-input mt-3"
+        type="password"
+        formControlName="confirmPassword"
+        placeholder="Confirm password"
+      />
+
+      <p class="mt-2 text-red-600 text-sm" *ngIf="apiError">
+        {{ apiError }}
+      </p>
+
+      <button
+        type="submit"
+        class="btn-main w-full mt-3"
+        [disabled]="isLoading"
+      >
+        {{ isLoading ? 'Resetting...' : 'Reset' }}
+      </button>
+    </form>
+  </div>
+</section>

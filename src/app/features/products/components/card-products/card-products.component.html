@@ -1,0 +1,52 @@
+       <div class="bg-white relative group overflow-hidden hover-card">
+            <div class="h-full border-2 border-gray-200 border-opacity-60 rounded-lg overflow-hidden">
+             <a [routerLink]="['/details',prod._id,prod.slug]">
+                 <img class="lg:h-96 md:h-36 w-full object-contain object-center"
+                [src]="prod.imageCover" 
+                [alt]="prod.title"
+                />
+             </a>
+                <div class="p-6">
+                    <h2 class="tracking-widest text-xs title-font font-medium text-gray-400 mb-1">CATEGORY</h2>
+                    <h2 class="title-font text-lg font-medium text-gray-900 mb-3 line-clamp-1">{{prod.title}}</h2>
+                    <p class="leading-relaxed mb-3 line-clamp-2">
+                    {{prod.description}}</p>
+                    <div>
+                        <button 
+                        [disabled]="isLoading "
+                        (click)="addToCart(prod._id)" class="btn-main w-full justify-center  flex items-center md:mb-2 disabled:text-black ">
+                         @if (isLoading) {
+                          Adding...
+                          <i class="fas fa-spinner fa-spin mx-2"></i>
+                         }@else {
+                           Add to Cart  
+                         } 
+                        </button>
+                      <div class="flex  justify-between">
+                           <span class="text-black font-bold inline-flex items-center leading-none text-sm">
+                      Price {{prod.price}}$
+                        </span>
+                          <span class="text-yellow-400  mr-3 inline-flex items-center lg:ml-auto md:ml-0 ml-auto leading-none text-sm pr-3 py-1 border-gray-200">
+                 {{prod.ratingsAverage}} <i class="far fa-star "></i>
+                        </span>
+                     
+                      </div>
+                    </div>
+                </div>
+            </div>
+
+<button
+  (click)="toggleWish(prod._id)"
+  class="absolute top-10 end-2 cursor-pointer "
+>
+  <i
+    class="fa-heart text-3xl"
+    [class.fas]="isWished"
+    [class.far]="!isWished"
+    [class.text-red-700]="isWished"
+    [class.text-gray-800]="!isWished"
+  ></i>
+</button>
+
+
+        </div>

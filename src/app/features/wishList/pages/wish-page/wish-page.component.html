@@ -1,0 +1,103 @@
+<section class="bg-main-50 max-w-7xl mx-auto min-h-screen px-8 py-20 antialiased md:py-16">
+  <div class="mx-auto max-w-7xl px-4 2xl:px-0">
+
+    <h2 class="text-4xl font-bold text-main-700 mb-6">
+      My Wishlist
+    </h2>
+
+    @if (!wishListService.useWishList.length) {
+      <div
+        class="bg-red-100 border-l-4 my-4 border-red-500 text-red-700 p-4"
+        role="alert"
+      >
+        <p class="font-bold">No products in wishlist yet...</p>
+      </div>
+    } @else {
+
+      <div class="space-y-6">
+
+        @for (prod of wishListService.useWishList; track $index) {
+
+          <!-- Card -->
+          <div
+            class="rounded-lg border border-gray-200 bg-white p-4 shadow-sm md:p-6"
+          >
+
+            <div class="flex flex-col md:flex-row md:items-start md:justify-between gap-6">
+
+              <!-- Image -->
+              <div class="shrink-0">
+                <img
+                  class="h-24 w-24 object-cover"
+                  [src]="prod.imageCover"
+                  [alt]="prod.title"
+                />
+              </div>
+
+              <!-- Content -->
+              <div class="flex-1 space-y-3">
+
+                <!-- Title -->
+                <a
+                  [routerLink]="['/details', prod._id]"
+                  class="text-base font-medium text-gray-900 hover:underline block"
+                >
+                  {{ prod.title }}
+                </a>
+
+                <!-- Remove -->
+                <button
+                  (click)="deleteW(prod._id)"
+                  type="button"
+                  class="inline-flex items-center text-sm font-medium text-red-600 hover:underline"
+                >
+                  <svg
+                    class="me-1.5 h-5 w-5"
+                    aria-hidden="true"
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="24"
+                    height="24"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      stroke="currentColor"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      stroke-width="2"
+                      d="M6 18 17.94 6M18 18 6.06 6"
+                    />
+                  </svg>
+                  Remove
+                </button>
+
+                <!-- Price -->
+                <p class="text-base font-bold text-main-800">
+                  {{ prod.price }} $
+                </p>
+
+              </div>
+
+              <!-- Add To Cart -->
+              <div class="flex items-end justify-end">
+                <button
+                 (click)="addToCart(prod._id)"
+                  class="btn-main bg-main-400 text-white px-6 py-2"     >
+                  Add To Cart
+                  <i class="fas fa-cart-plus ms-2"></i>
+                  
+                </button>
+              </div>
+
+            </div>
+
+          </div>
+
+        }
+
+      </div>
+    }
+
+  </div>
+</section>
+
