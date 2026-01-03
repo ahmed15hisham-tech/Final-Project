@@ -1,26 +1,28 @@
-<section class="p-20">
-  <div class="bg-main-100 rounded-3xl p-20">
-    <header>
-      <h1 class="text-center font-bold text-4xl">reset your account password</h1>
+<section class="min-h-screen w-full px-3 py-6 flex items-center justify-center">
+  <div class="w-full max-w-none sm:max-w-2xl lg:max-w-4xl xl:max-w-5xl bg-main-100 rounded-3xl p-6 sm:p-12 lg:p-16 xl:p-20">
+    <header class="mb-6 lg:mb-10">
+      <h1 class="text-center font-bold text-2xl sm:text-4xl lg:text-4xl">
+        reset your account password
+      </h1>
     </header>
 
-    <form [formGroup]="form" (ngSubmit)="submit()">
+    <form [formGroup]="form" (ngSubmit)="submit()" class="w-full">
       <input
-        class="peer main-input mt-8"
+        class="peer main-input w-full mt-8"
         type="email"
         formControlName="email"
         placeholder="Email"
       />
 
       <input
-        class="peer main-input mt-3"
+        class="peer main-input w-full mt-4"
         type="password"
         formControlName="newPassword"
         placeholder="New password"
       />
 
       <input
-        class="peer main-input mt-3"
+        class="peer main-input w-full mt-4"
         type="password"
         formControlName="confirmPassword"
         placeholder="Confirm password"
@@ -30,11 +32,7 @@
         {{ apiError }}
       </p>
 
-      <button
-        type="submit"
-        class="btn-main w-full mt-3"
-        [disabled]="isLoading"
-      >
+      <button type="submit" class="btn-main w-full mt-6" [disabled]="isLoading">
         {{ isLoading ? 'Resetting...' : 'Reset' }}
       </button>
     </form>
